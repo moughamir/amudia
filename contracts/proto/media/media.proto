@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package media;
 
-option go_package = "media/contracts/gen/go/media";
-option java_package = "com.media.contracts.media";
-option csharp_namespace = "Media.Contracts.Media";
+option go_package = "io.github.moughamir/amudia/gen/go/media";
+option java_package = "io.github.moughamir.amudia.media";
+option csharp_namespace = "Amudia.Media";
 
 import "google/protobuf/timestamp.proto";
 

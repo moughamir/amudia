@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package playback;
 
-option go_package = "media/contracts/gen/go/playback";
-option java_package = "com.media.contracts.playback";
-option csharp_namespace = "Media.Contracts.Playback";
+option go_package = "io.github.moughamir/amudia/gen/go/playback";
+option java_package = "io.github.moughamir.amudia.playback";
+option csharp_namespace = "Amudia.Playback";
 
 service PlaybackService {
   rpc StartPlayback(StartPlaybackRequest) returns (StartPlaybackResponse);

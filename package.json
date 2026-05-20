@@ -1,7 +1,18 @@
 {
-  "name": "media-platform",
+  "name": "amudia",
   "version": "0.1.0",
   "private": true,
+  "description": "Stream licensed, public-domain, and user-owned media",
+  "author": "Moughamir (https://github.com/moughamir)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moughamir/amudia.git"
+  },
+  "homepage": "https://github.com/moughamir/amudia#readme",
+  "bugs": {
+    "url": "https://github.com/moughamir/amudia/issues"
+  },
   "workspaces": [
     "shared",
     "contracts",
@@ -12,8 +23,8 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "generate:types": "turbo run generate --filter=@media/contracts",
-    "build:types": "turbo run build --filter=@media/contracts",
+    "generate:types": "turbo run generate --filter=@amudia/contracts",
+    "build:types": "turbo run build --filter=@amudia/contracts",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean",
     "prepare": "husky",

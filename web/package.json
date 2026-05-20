@@ -1,7 +1,9 @@
 {
-  "name": "@media/web",
+  "name": "@amudia/web",
   "version": "0.1.0",
   "private": true,
+  "author": "Moughamir (https://github.com/moughamir)",
+  "repository": "github:moughamir/amudia",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,8 +12,8 @@
     "clean": "rm -rf .next"
   },
   "dependencies": {
-    "@media/contracts": "workspace:*",
-    "@media/shared": "workspace:*",
+    "@amudia/contracts": "workspace:*",
+    "@amudia/shared": "workspace:*",
     "next": "^14.2.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"

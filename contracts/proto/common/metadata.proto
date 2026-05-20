@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package common;
 
-option go_package = "media/contracts/gen/go/common";
-option java_package = "com.media.contracts.common";
-option csharp_namespace = "Media.Contracts.Common";
+option go_package = "io.github.moughamir/amudia/gen/go/common";
+option java_package = "io.github.moughamir.amudia.common";
+option csharp_namespace = "Amudia.Common";
 
 message Metadata {
   map<string, string> labels = 1;

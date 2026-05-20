@@ -1,7 +1,9 @@
 {
-  "name": "@media/worker",
+  "name": "@amudia/worker",
   "version": "0.1.0",
   "private": true,
+  "author": "Moughamir (https://github.com/moughamir)",
+  "repository": "github:moughamir/amudia",
   "scripts": {
     "dev": "bun --watch src/index.ts",
     "build": "tsc",
@@ -10,8 +12,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@media/contracts": "workspace:*",
-    "@media/shared": "workspace:*",
+    "@amudia/contracts": "workspace:*",
+    "@amudia/shared": "workspace:*",
     "bullmq": "^5.8.0",
     "ioredis": "^5.4.0"
   },

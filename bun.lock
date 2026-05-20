@@ -14,12 +14,12 @@
       },
     },
     "api": {
-      "name": "@media/api",
+      "name": "@amudia/api",
       "version": "0.1.0",
       "dependencies": {
+        "@amudia/contracts": "workspace:*",
+        "@amudia/shared": "workspace:*",
         "@aws-sdk/client-s3": "^3.600.0",
-        "@media/contracts": "workspace:*",
-        "@media/shared": "workspace:*",
         "bcryptjs": "^2.4.3",
         "cors": "^2.8.5",
         "express": "^4.19.0",
@@ -38,11 +38,11 @@
       },
     },
     "contracts": {
-      "name": "@media/contracts",
+      "name": "@amudia/contracts",
       "version": "0.1.0",
     },
     "shared": {
-      "name": "@media/shared",
+      "name": "@amudia/shared",
       "version": "0.1.0",
       "dependencies": {
         "@aws-sdk/client-s3": "^3.600.0",
@@ -50,18 +50,18 @@
         "pg": "^8.12.0",
       },
       "devDependencies": {
-        "@media/contracts": "workspace:*",
+        "@amudia/contracts": "workspace:*",
         "@types/node": "^20.14.0",
         "@types/pg": "^8.11.0",
         "typescript": "^5.5.0",
       },
     },
     "web": {
-      "name": "@media/web",
+      "name": "@amudia/web",
       "version": "0.1.0",
       "dependencies": {
-        "@media/contracts": "workspace:*",
-        "@media/shared": "workspace:*",
+        "@amudia/contracts": "workspace:*",
+        "@amudia/shared": "workspace:*",
         "next": "^14.2.0",
         "react": "^18.3.0",
         "react-dom": "^18.3.0",
@@ -74,11 +74,11 @@
       },
     },
     "worker": {
-      "name": "@media/worker",
+      "name": "@amudia/worker",
       "version": "0.1.0",
       "dependencies": {
-        "@media/contracts": "workspace:*",
-        "@media/shared": "workspace:*",
+        "@amudia/contracts": "workspace:*",
+        "@amudia/shared": "workspace:*",
         "bullmq": "^5.8.0",
         "ioredis": "^5.4.0",
       },
@@ -89,6 +89,16 @@
     },
   },
   "packages": {
+    "@amudia/api": ["@amudia/api@workspace:api"],
+
+    "@amudia/contracts": ["@amudia/contracts@workspace:contracts"],
+
+    "@amudia/shared": ["@amudia/shared@workspace:shared"],
+
+    "@amudia/web": ["@amudia/web@workspace:web"],
+
+    "@amudia/worker": ["@amudia/worker@workspace:worker"],
+
     "@aws-crypto/crc32": ["@aws-crypto/crc32@5.2.0", "", { "dependencies": { "@aws-crypto/util": "^5.2.0", "@aws-sdk/types": "^3.222.0", "tslib": "^2.6.2" } }, "sha512-nLbCWqQNgUiwwtFsen1AdzAtvuLRsQS8rYgMuxCrdKf9kOssamGLuPwyTY9wyYblNr9+1XM8v6zoDTPPSIeANg=="],
 
     "@aws-crypto/crc32c": ["@aws-crypto/crc32c@5.2.0", "", { "dependencies": { "@aws-crypto/util": "^5.2.0", "@aws-sdk/types": "^3.222.0", "tslib": "^2.6.2" } }, "sha512-+iWb8qaHLYKrNvGRbiYRHSdKRWhto5XlZUEBwDjYNf+ly5SVYG6zEoYIdxvf5R3zyeP16w4PLBn3rH1xc74Rag=="],
@@ -194,16 +204,6 @@
     "@hutson/parse-repository-url": ["@hutson/parse-repository-url@3.0.2", "", {}, "sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q=="],
 
     "@ioredis/commands": ["@ioredis/commands@1.5.1", "", {}, "sha512-JH8ZL/ywcJyR9MmJ5BNqZllXNZQqQbnVZOqpPQqE1vHiFgAw4NHbvE0FOduNU8IX9babitBT46571OnPTT0Zcw=="],
-
-    "@media/api": ["@media/api@workspace:api"],
-
-    "@media/contracts": ["@media/contracts@workspace:contracts"],
-
-    "@media/shared": ["@media/shared@workspace:shared"],
-
-    "@media/web": ["@media/web@workspace:web"],
-
-    "@media/worker": ["@media/worker@workspace:worker"],
 
     "@msgpackr-extract/msgpackr-extract-darwin-arm64": ["@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3", "", { "os": "darwin", "cpu": "arm64" }, "sha512-QZHtlVgbAdy2zAqNA9Gu1UpIuI8Xvsd1v8ic6B2pZmeFnFcMWiPLfWXh7TVw4eGEZ/C9TH281KwhVoeQUKbyjw=="],
 

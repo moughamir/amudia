@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package events;
 
-option go_package = "media/contracts/gen/go/events";
-option java_package = "com.media.contracts.events";
-option csharp_namespace = "Media.Contracts.Events";
+option go_package = "io.github.moughamir/amudia/gen/go/events";
+option java_package = "io.github.moughamir.amudia.events";
+option csharp_namespace = "Amudia.Events";
 
 message PlaybackStarted {
   string user_id = 1;

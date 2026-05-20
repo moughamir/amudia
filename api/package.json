@@ -1,7 +1,9 @@
 {
-  "name": "@media/api",
+  "name": "@amudia/api",
   "version": "0.1.0",
   "private": true,
+  "author": "Moughamir (https://github.com/moughamir)",
+  "repository": "github:moughamir/amudia",
   "scripts": {
     "dev": "bun --watch src/index.ts",
     "build": "tsc",
@@ -11,8 +13,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.600.0",
-    "@media/contracts": "workspace:*",
-    "@media/shared": "workspace:*",
+    "@amudia/contracts": "workspace:*",
+    "@amudia/shared": "workspace:*",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.19.0",

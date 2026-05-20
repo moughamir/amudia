@@ -12,10 +12,10 @@
     "noEmit": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@media/contracts": ["../contracts/src/index.ts"],
-      "@media/contracts/*": ["../contracts/src/*"],
-      "@media/shared": ["../shared/index.ts"],
-      "@media/shared/*": ["../shared/*"]
+      "@amudia/contracts": ["../contracts/src/index.ts"],
+      "@amudia/contracts/*": ["../contracts/src/*"],
+      "@amudia/shared": ["../shared/index.ts"],
+      "@amudia/shared/*": ["../shared/*"]
     },
     "plugins": [
       {

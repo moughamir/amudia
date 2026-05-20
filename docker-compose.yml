@@ -1,7 +1,7 @@
 services:
   gateway:
     image: nginx:alpine
-    container_name: media-gateway
+    container_name: amudia-gateway
     ports:
       - "80:80"
       - "443:443"
@@ -12,22 +12,22 @@ services:
       - api
       - minio
     networks:
-      - medianet
+      - amudia-net
   web:
     build:
       context: ./web
-    container_name: media-web
+    container_name: amudia-web
     restart: unless-stopped
     environment:
       NEXT_PUBLIC_API_URL: http://localhost/api
     depends_on:
       - api
     networks:
-      - medianet
+      - amudia-net
   api:
     build:
       context: ./api
-    container_name: media-api
+    container_name: amudia-api
     restart: unless-stopped
     env_file:
         - .env
@@ -39,11 +39,11 @@ services:
       minio:
         condition: service_healthy
     networks:
-      - medianet
+      - amudia-net
   worker:
     build:
       context: ./worker
-    container_name: media-worker
+    container_name: amudia-worker
     restart: unless-stopped
     env_file:
         - .env
@@ -51,37 +51,37 @@ services:
       - redis
       - api
     networks:
-      - medianet
+      - amudia-net
   postgres:
     image: postgres:17-alpine
-    container_name: media-db
+    container_name: amudia-db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: media
-      POSTGRES_USER: media
-      POSTGRES_PASSWORD: media_password
+      POSTGRES_DB: amudia
+      POSTGRES_USER: amudia
+      POSTGRES_PASSWORD: amudia_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U media"]
+      test: ["CMD-SHELL", "pg_isready -U amudia"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
-      - medianet
+      - amudia-net
   redis:
     image: redis:8-alpine
-    container_name: media-cache
+    container_name: amudia-cache
     restart: unless-stopped
     command: redis-server --appendonly yes
     volumes:
       - redis_data:/data
     networks:
-      - medianet
+      - amudia-net
   minio:
     image: minio/minio
-    container_name: media-storage
+    container_name: amudia-storage
     restart: unless-stopped
     ports:
       - "9000:9000"
@@ -93,28 +93,28 @@ services:
     volumes:
       - minio_data:/data
     networks:
-      - medianet
+      - amudia-net
   meilisearch:
     image: getmeili/meilisearch:v1
-    container_name: media-search
+    container_name: amudia-search
     restart: unless-stopped
     environment:
       MEILI_MASTER_KEY: masterkey
     volumes:
       - meili_data:/meili_data
     networks:
-      - medianet
+      - amudia-net
   ffmpeg:
     image: jrottenberg/ffmpeg:7-alpine
-    container_name: media-transcoder
+    container_name: amudia-transcoder
     restart: unless-stopped
     command: tail -f /dev/null
     volumes:
       - ./storage/data:/media
     networks:
-      - medianet
+      - amudia-net
 networks:
-  medianet:
+  amudia-net:
     driver: bridge
 volumes:
   postgres_data:

@@ -4,7 +4,7 @@ export class StorageService {
   private client: S3Client
   private bucket: string
 
-  constructor(endpoint: string, accessKey: string, secretKey: string, bucket = "media") {
+  constructor(endpoint: string, accessKey: string, secretKey: string, bucket = "amudia") {
     this.client = new S3Client({
       endpoint,
       region: "us-east-1",

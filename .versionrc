@@ -8,6 +8,6 @@
     { "type": "perf", "section": "Performance" },
     { "type": "test", "section": "Tests" }
   ],
-  "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
-  "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}"
+  "commitUrlFormat": "https://github.com/moughamir/amudia/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/moughamir/amudia/compare/{{previousTag}}...{{currentTag}}"
 }

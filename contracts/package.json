@@ -1,7 +1,9 @@
 {
-  "name": "@media/contracts",
+  "name": "@amudia/contracts",
   "version": "0.1.0",
   "private": true,
+  "author": "Moughamir (https://github.com/moughamir)",
+  "repository": "github:moughamir/amudia",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
