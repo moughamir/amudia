@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@media/contracts": ["../contracts/src/index.ts"],
+      "@media/contracts/*": ["../contracts/src/*"],
+      "@media/shared": ["../shared/index.ts"],
+      "@media/shared/*": ["../shared/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": ["src/**/*", "next-env.d.ts"]
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package common;
+
+import "common/errors.proto";
+
+message Error {
+  ErrorCode code = 1;
+  string message = 2;
+  map<string, string> metadata = 3;
+}
+
+message ResultMeta {
+  bool success = 1;
+  Error error = 2;
+}

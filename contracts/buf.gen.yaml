@@ -1,0 +1,26 @@
+version: v2
+
+plugins:
+  - remote: buf.build/protocolbuffers/go
+    out: gen/go
+
+  - remote: buf.build/grpc/go
+    out: gen/go
+
+  - remote: buf.build/protocolbuffers/java
+    out: gen/java
+
+  - remote: buf.build/protocolbuffers/csharp
+    out: gen/csharp
+
+  - remote: buf.build/protocolbuffers/rust
+    out: gen/rust
+
+  - remote: buf.build/protocolbuffers/js
+    out: gen/ts
+
+  - remote: buf.build/grpc/web
+    out: gen/ts
+
+  - remote: buf.build/grpc-ecosystem/openapiv2
+    out: gen/openapi

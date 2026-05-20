@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package media;
+
+import "google/protobuf/timestamp.proto";
+
+enum MediaType {
+  MEDIA_UNKNOWN = 0;
+  MOVIE = 1;
+  SERIES = 2;
+  MUSIC = 3;
+  DOCUMENTARY = 4;
+}
+
+enum MediaStatus {
+  PROCESSING = 0;
+  READY = 1;
+  BLOCKED = 2;
+}
+
+message Media {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  MediaType type = 4;
+  repeated string genres = 5;
+  uint32 duration_seconds = 6;
+  string poster_url = 7;
+  MediaStatus status = 8;
+  google.protobuf.Timestamp release_date = 9;
+}

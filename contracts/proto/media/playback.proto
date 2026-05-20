@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package playback;
+
+service PlaybackService {
+  rpc StartPlayback(StartPlaybackRequest) returns (StartPlaybackResponse);
+  rpc UpdateProgress(ProgressRequest) returns (Empty);
+}
+
+message StartPlaybackRequest {
+  string media_id = 1;
+  string user_id = 2;
+}
+
+message StartPlaybackResponse {
+  string token = 1;
+  repeated StreamSource streams = 2;
+}
+
+message StreamSource {
+  string id = 1;
+  string url = 2;
+  string quality = 3;
+  map<string, string> metadata = 4;
+}
+
+message PlaybackSession {
+  string session_id = 1;
+  string user_id = 2;
+  string media_id = 3;
+  uint64 position_seconds = 4;
+  int64 expires_at = 5;
+}
+
+message ProgressRequest {
+  string session_id = 1;
+  string user_id = 2;
+  string media_id = 3;
+  uint64 position_seconds = 4;
+  bool completed = 5;
+}
+
+message Empty {}

@@ -1,0 +1,13 @@
+services:
+  buf:
+    image: bufbuild/buf:latest
+    working_dir: /workspace
+    volumes:
+      - ../:/workspace
+    entrypoint: ["buf"]
+
+  protoc:
+    image: namely/protoc-all:latest
+    working_dir: /workspace
+    volumes:
+      - ../:/workspace

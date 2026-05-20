@@ -11,6 +11,7 @@ worker/node_modules/
 api/dist/
 web/.next/
 worker/dist/
+contracts/dist/
 
 # --- Generated code ---
 contracts/gen/
@@ -35,6 +36,9 @@ Thumbs.db
 # --- Logs ---
 npm-debug.log*
 *.log
+
+# --- Turbo cache ---
+.turbo/
 
 # --- Runtime data ---
 storage/data/

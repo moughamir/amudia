@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package common;
+
+enum ErrorCode {
+  UNKNOWN = 0;
+  NOT_FOUND = 1;
+  VALIDATION = 2;
+  FORBIDDEN = 3;
+  UNAUTHORIZED = 4;
+  CONFLICT = 5;
+  RATE_LIMITED = 6;
+  INTERNAL = 7;
+}

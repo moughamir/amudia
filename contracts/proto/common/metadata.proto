@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package common;
+
+message Metadata {
+  map<string, string> labels = 1;
+  string trace_id = 2;
+  string request_id = 3;
+}

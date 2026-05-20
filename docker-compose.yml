@@ -1,0 +1,124 @@
+services:
+  gateway:
+    image: nginx:alpine
+    container_name: media-gateway
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+      - api
+      - minio
+    networks:
+      - medianet
+  web:
+    build:
+      context: ./web
+    container_name: media-web
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost/api
+    depends_on:
+      - api
+    networks:
+      - medianet
+  api:
+    build:
+      context: ./api
+    container_name: media-api
+    restart: unless-stopped
+    env_file:
+        - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    networks:
+      - medianet
+  worker:
+    build:
+      context: ./worker
+    container_name: media-worker
+    restart: unless-stopped
+    env_file:
+        - .env
+    depends_on:
+      - redis
+      - api
+    networks:
+      - medianet
+  postgres:
+    image: postgres:17-alpine
+    container_name: media-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: media
+      POSTGRES_USER: media
+      POSTGRES_PASSWORD: media_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U media"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - medianet
+  redis:
+    image: redis:8-alpine
+    container_name: media-cache
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - medianet
+  minio:
+    image: minio/minio
+    container_name: media-storage
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: strongpassword
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - medianet
+  meilisearch:
+    image: getmeili/meilisearch:v1
+    container_name: media-search
+    restart: unless-stopped
+    environment:
+      MEILI_MASTER_KEY: masterkey
+    volumes:
+      - meili_data:/meili_data
+    networks:
+      - medianet
+  ffmpeg:
+    image: jrottenberg/ffmpeg:7-alpine
+    container_name: media-transcoder
+    restart: unless-stopped
+    command: tail -f /dev/null
+    volumes:
+      - ./storage/data:/media
+    networks:
+      - medianet
+networks:
+  medianet:
+    driver: bridge
+volumes:
+  postgres_data:
+  redis_data:
+  minio_data:
+  meili_data:
+

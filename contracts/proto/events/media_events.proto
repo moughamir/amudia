@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package events;
+
+message MediaPublished {
+  string media_id = 1;
+  int64 occurred_at = 2;
+}

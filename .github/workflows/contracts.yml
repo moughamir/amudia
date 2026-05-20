@@ -1,0 +1,31 @@
+name: contracts
+
+on:
+  push:
+    branches: [main, develop, 'feature/**', 'release/**', 'hotfix/**']
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: bufbuild/buf-setup-action@v1
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - run: buf lint
+        working-directory: contracts
+
+      - run: buf breaking --against '.git#branch=main'
+        working-directory: contracts
+
+      - run: buf generate
+        working-directory: contracts
+
+      - name: Compile generated TypeScript
+        run: bunx tsc --noEmit
+        working-directory: contracts

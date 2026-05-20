@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package media;
+
+import "media/media.proto";
+import "common/pagination.proto";
+
+service CatalogService {
+  rpc GetMedia(GetMediaRequest) returns (Media);
+
+  rpc SearchMedia(SearchRequest) returns (SearchResponse);
+
+  rpc Trending(common.PageRequest) returns (SearchResponse);
+}
+
+message GetMediaRequest {
+  string id = 1;
+}
+
+message SearchRequest {
+  string query = 1;
+  repeated string genres = 2;
+  common.PageRequest page = 3;
+}
+
+message SearchResponse {
+  repeated Media items = 1;
+  common.PageInfo page = 2;
+}

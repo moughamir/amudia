@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package recommendation;
+
+import "media/media.proto";
+import "common/pagination.proto";
+
+service RecommendationService {
+  rpc GetRecommendations(RecommendationsRequest) returns (RecommendationsResponse);
+}
+
+message RecommendationsRequest {
+  string user_id = 1;
+  common.PageRequest page = 2;
+}
+
+message RecommendationsResponse {
+  repeated media.Media items = 1;
+  common.PageInfo page = 2;
+}

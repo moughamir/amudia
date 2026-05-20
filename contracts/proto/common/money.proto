@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package common;
+
+message Money {
+  string currency_code = 1;
+  uint64 units = 2;
+  uint32 nanos = 3;
+}
