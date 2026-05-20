@@ -13,7 +13,7 @@ plugins:
   - remote: buf.build/protocolbuffers/csharp
     out: gen/csharp
 
-  - remote: buf.build/protocolbuffers/rust
+  - remote: buf.build/community/neoeinstein-prost
     out: gen/rust
 
   - remote: buf.build/protocolbuffers/js
