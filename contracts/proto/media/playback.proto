@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package playback;
 
+option go_package = "media/contracts/gen/go/playback";
+option java_package = "com.media.contracts.playback";
+option csharp_namespace = "Media.Contracts.Playback";
+
 service PlaybackService {
   rpc StartPlayback(StartPlaybackRequest) returns (StartPlaybackResponse);
   rpc UpdateProgress(ProgressRequest) returns (Empty);

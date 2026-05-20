@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package users;
 
+option go_package = "media/contracts/gen/go/users";
+option java_package = "com.media.contracts.users";
+option csharp_namespace = "Media.Contracts.Users";
+
 import "google/protobuf/timestamp.proto";
 
 message User {

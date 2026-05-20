@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package common;
 
+option go_package = "media/contracts/gen/go/common";
+option java_package = "com.media.contracts.common";
+option csharp_namespace = "Media.Contracts.Common";
+
 message PageRequest {
   uint32 limit = 1;
   string cursor = 2;

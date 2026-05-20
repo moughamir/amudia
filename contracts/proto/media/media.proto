@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package media;
 
+option go_package = "media/contracts/gen/go/media";
+option java_package = "com.media.contracts.media";
+option csharp_namespace = "Media.Contracts.Media";
+
 import "google/protobuf/timestamp.proto";
 
 enum MediaType {

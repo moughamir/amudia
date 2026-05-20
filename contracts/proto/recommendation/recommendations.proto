@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package recommendation;
 
+option go_package = "media/contracts/gen/go/recommendation";
+option java_package = "com.media.contracts.recommendation";
+option csharp_namespace = "Media.Contracts.Recommendation";
+
 import "media/media.proto";
 import "common/pagination.proto";
 
