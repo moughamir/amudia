@@ -1,0 +1,44 @@
+# --- Version control ---
+.git
+.gitignore
+.github
+
+# --- Environment ---
+.env
+.env.example
+
+# --- Documentation ---
+*.md
+responsibilities.md
+upgrade.md
+
+# --- Dependencies ---
+node_modules/
+api/node_modules/
+web/node_modules/
+worker/node_modules/
+
+# --- Build output ---
+api/dist/
+web/.next/
+worker/dist/
+
+# --- Generated code ---
+contracts/gen/
+
+# --- Scripts ---
+scripts/
+
+# --- Runtime data ---
+storage/data/
+
+# --- IDE & OS ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# --- Logs ---
+*.log

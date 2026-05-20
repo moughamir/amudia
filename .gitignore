@@ -1,0 +1,46 @@
+# --- Environment ---
+.env
+
+# --- Dependencies ---
+node_modules/
+api/node_modules/
+web/node_modules/
+worker/node_modules/
+
+# --- Build output ---
+api/dist/
+web/.next/
+worker/dist/
+
+# --- Generated code ---
+contracts/gen/
+contracts/buf.lock
+
+# --- TypeScript incremental ---
+*.tsbuildinfo
+
+# --- Next.js auto-generated ---
+web/next-env.d.ts
+
+# --- IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+npm-debug.log*
+*.log
+
+# --- Runtime data ---
+storage/data/
+
+# --- Lockfiles ---
+package-lock.json
+api/package-lock.json
+web/package-lock.json
+worker/package-lock.json
