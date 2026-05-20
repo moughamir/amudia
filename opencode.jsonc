@@ -1,0 +1,31 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md"],
+  "command": {
+    "dev": {
+      "description": "Run all packages in dev mode (turbo)",
+      "prompt": "Run `bun run dev` to start all services in development mode",
+      "template": "bun run dev"
+    },
+    "build": {
+      "description": "Build all packages",
+      "prompt": "Run `bun run build` to build all packages",
+      "template": "bun run build"
+    },
+    "generate:types": {
+      "description": "Regenerate proto types (requires Docker)",
+      "prompt": "Run `bun run generate:types` to regenerate TypeScript types from protobuf definitions",
+      "template": "bun run generate:types"
+    },
+    "typecheck": {
+      "description": "Typecheck all packages",
+      "prompt": "Run `bun run typecheck` to typecheck all packages (builds contracts first)",
+      "template": "bun run typecheck"
+    },
+    "clean": {
+      "description": "Remove dist/, gen/, .next/",
+      "prompt": "Run `bun run clean` to remove all build artifacts",
+      "template": "bun run clean"
+    }
+  }
+}
