@@ -21,7 +21,7 @@ export class SessionService {
   async getSession(token: string): Promise<StoredSession | null> {
     const raw = await this.redis.get(`session:${token}`)
     if (!raw) return null
-    return JSON.parse(raw)
+    return JSON.parse(raw) as StoredSession
   }
 
   async invalidate(token: string): Promise<void> {

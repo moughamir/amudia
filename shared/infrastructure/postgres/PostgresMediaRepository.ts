@@ -1,7 +1,20 @@
 import type { Pool } from "pg"
+import type { MediaType, MediaStatus } from "../../core/Media"
 import { Media } from "../../domain/media/entities/Media"
 import type { IMediaRepository } from "../../domain/media/intefaces/MediaRepository"
 import type { MediaProps } from "../../domain/media/valueObjects/MediaProps"
+
+interface MediaRow {
+  id: string
+  title: string
+  description: string
+  type: MediaType
+  genres: string[]
+  poster_url: string
+  release_date: Date
+  status: MediaStatus
+  duration: number
+}
 
 export class PostgresMediaRepository implements IMediaRepository {
   constructor(private pool: Pool) {}
@@ -53,7 +66,7 @@ export class PostgresMediaRepository implements IMediaRepository {
     return result.rows.map(r => this.rowToMedia(r))
   }
 
-  private rowToMedia(row: any): Media {
+  private rowToMedia(row: MediaRow): Media {
     return new Media(row.id, {
       title: row.title,
       description: row.description,
