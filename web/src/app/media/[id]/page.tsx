@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "next/navigation"
 
-interface MediaDetail {
+export interface MediaDetail {
   id: string
   title: string
   description: string

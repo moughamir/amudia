@@ -55,7 +55,7 @@ bun run typecheck    # typechecks all packages (builds contracts first)
 ### Typecheck
 
 - `turbo.json` declares `typecheck` depends on `^build` — so `@amudia/contracts` must build first
-- `@amudia/shared` has no build/typecheck script; turbo skips it
+- All 5 packages now have `tsconfig.json` with `strict: true` (including `shared/`)
 - Pre-commit hook runs `bun run typecheck` (the whole monorepo)
 
 ### Imports
