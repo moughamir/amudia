@@ -1,5 +1,22 @@
 # Amudia — AGENTS.md
 
+<!--toc:start-->
+
+- [Amudia — AGENTS.md](#amudia-agentsmd)
+  - [Quick start](#quick-start)
+  - [Repo](#repo)
+  - [Monorepo structure](#monorepo-structure)
+  - [Hard-won lessons](#hard-won-lessons)
+    - [Proto codegen (contracts/)](#proto-codegen-contracts)
+    - [Typecheck](#typecheck)
+    - [Imports](#imports)
+    - [Docker infra](#docker-infra)
+  - [Commands](#commands)
+  - [CI](#ci)
+  - [Docker images](#docker-images)
+  - [Conventions](#conventions)
+  <!--toc:end-->
+
 ## Quick start
 
 ```sh
@@ -17,17 +34,18 @@ bun run typecheck    # typechecks all packages (builds contracts first)
 
 ## Monorepo structure
 
-| Package | Entry | Dev | Build | Notes |
-|---|---|---|---|---|
-| `@amudia/contracts` | `src/index.ts` re-exports `gen/ts/` | — | `bun tsc` | `"type": "module"` |
-| `@amudia/shared` | no barrel — imported via relative paths | — | (none) | `core/` has DDD primitives (Entity, ValueObject, UseCase, etc.) |
-| `@amudia/api` | `src/index.ts` | `bun --watch src/index.ts` | `tsc` | Express, commonjs |
-| `@amudia/web` | `src/app/layout.tsx` | `next dev` | `next build` | Next.js standalone output |
-| `@amudia/worker` | `src/index.ts` | `bun --watch src/index.ts` | `tsc` | BullMQ consumer, commonjs |
+| Package             | Entry                                   | Dev                        | Build        | Notes                                                           |
+| ------------------- | --------------------------------------- | -------------------------- | ------------ | --------------------------------------------------------------- |
+| `@amudia/contracts` | `src/index.ts` re-exports `gen/ts/`     | —                          | `bun tsc`    | `"type": "module"`                                              |
+| `@amudia/shared`    | no barrel — imported via relative paths | —                          | (none)       | `core/` has DDD primitives (Entity, ValueObject, UseCase, etc.) |
+| `@amudia/api`       | `src/index.ts`                          | `bun --watch src/index.ts` | `tsc`        | Express, commonjs                                               |
+| `@amudia/web`       | `src/app/layout.tsx`                    | `next dev`                 | `next build` | Next.js standalone output                                       |
+| `@amudia/worker`    | `src/index.ts`                          | `bun --watch src/index.ts` | `tsc`        | BullMQ consumer, commonjs                                       |
 
 ## Hard-won lessons
 
 ### Proto codegen (contracts/)
+
 - **Requires Docker** — buf runs inside a container from `contracts/tools/docker-compose.yml`
 - Rust plugin is `buf.build/community/neoeinstein-prost` (official one doesn't exist on BSR)
 - gRPC-web requires `opt: mode=grpcwebtext`
@@ -35,32 +53,42 @@ bun run typecheck    # typechecks all packages (builds contracts first)
 - Command: `bun run generate:types` (alias for `turbo run generate --filter=@amudia/contracts`)
 
 ### Typecheck
+
 - `turbo.json` declares `typecheck` depends on `^build` — so `@amudia/contracts` must build first
 - `@amudia/shared` has no build/typecheck script; turbo skips it
 - Pre-commit hook runs `bun run typecheck` (the whole monorepo)
 
 ### Imports
+
 - Internal packages **use relative paths** across workspace boundaries (e.g. `../../shared/infrastructure/...`)
 - tsconfig `paths` aliases exist (`@amudia/contracts`, `@amudia/shared`) but are **not used** in source code
 - `@amudia/shared` has **no barrel file** (`index.ts`) at package root
 
 ### Docker infra
+
+- Full stack: gateway (nginx), web, api, worker, postgres, redis, minio, meilisearch, ffmpeg
 - Nginx gateway routes: `/` → web:3000, `/api` → api:8080, `/media` → minio:9000
 - DB schema: `postgres/init.sql` auto-runs on first container start
 - `storage/data/` is gitignored (runtime media files)
+- `gateway/nginx.conf` is for local Docker dev (not production)
+
+### Module format mismatch
+
+- `contracts` is ESM (`"type": "module"`); `api` and `worker` are CommonJS
+- This matters if you're adding `package.json` fields or configuring bundlers
 
 ## Commands
 
-| Command | What |
-|---|---|
-| `bun run dev` | Run all packages in dev mode (turbo) |
-| `bun run build` | Build all packages |
-| `bun run generate:types` | Regenerate proto types (Docker required) |
-| `bun run build:types` | Rebuild contracts (no proto gen) |
-| `bun run typecheck` | Typecheck all packages |
-| `bun run clean` | Remove `dist/`, `gen/`, `.next/` |
-| `bun run changelog` | `standard-version --dry-run` |
-| `bun run release` | `standard-version` (conventional commits → semver) |
+| Command                  | What                                               |
+| ------------------------ | -------------------------------------------------- |
+| `bun run dev`            | Run all packages in dev mode (turbo)               |
+| `bun run build`          | Build all packages                                 |
+| `bun run generate:types` | Regenerate proto types (Docker required)           |
+| `bun run build:types`    | Rebuild contracts (no proto gen)                   |
+| `bun run typecheck`      | Typecheck all packages                             |
+| `bun run clean`          | Remove `dist/`, `gen/`, `.next/`                   |
+| `bun run changelog`      | `standard-version --dry-run`                       |
+| `bun run release`        | `standard-version` (conventional commits → semver) |
 
 ## CI
 
