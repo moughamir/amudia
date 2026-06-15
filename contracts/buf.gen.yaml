@@ -1,26 +1,26 @@
 version: v2
 
 plugins:
-  - remote: buf.build/protocolbuffers/go
+  - remote: buf.build/protocolbuffers/go:v1.36.11
     out: gen/go
 
-  - remote: buf.build/grpc/go
+  - remote: buf.build/grpc/go:v1.6.2
     out: gen/go
 
-  - remote: buf.build/protocolbuffers/java
+  - remote: buf.build/protocolbuffers/java:v35.1
     out: gen/java
 
-  - remote: buf.build/protocolbuffers/csharp
+  - remote: buf.build/protocolbuffers/csharp:v35.1
     out: gen/csharp
 
-  - remote: buf.build/community/neoeinstein-prost
+  - remote: buf.build/community/neoeinstein-prost:v0.3.0
     out: gen/rust
 
-  - remote: bufbuild/bufbuild/es
+  - remote: buf.build/bufbuild/es:v1.10.0
     out: gen/ts
 
-  - remote: bufbuild/connect-es
+  - remote: buf.build/bufbuild/connect-es:v0.13.0
     out: gen/ts
 
-  - remote: buf.build/grpc-ecosystem/openapiv2
+  - remote: buf.build/grpc-ecosystem/openapiv2:v2.29.0
     out: gen/openapi
