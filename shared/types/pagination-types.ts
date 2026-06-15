@@ -1,14 +1,1 @@
-export interface PageRequest {
-  limit: number
-  cursor?: string
-}
-
-export interface PageInfo {
-  hasMore: boolean
-  nextCursor?: string
-}
-
-export interface PageResponse<T> {
-  items: T[]
-  page?: PageInfo
-}
+export type { PageRequest, Page, Cursor } from "../core/Pagination"
