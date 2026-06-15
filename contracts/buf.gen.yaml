@@ -16,13 +16,11 @@ plugins:
   - remote: buf.build/community/neoeinstein-prost
     out: gen/rust
 
-  - remote: buf.build/protocolbuffers/js
+  - remote: bufbuild/bufbuild/es
     out: gen/ts
 
-  - remote: buf.build/grpc/web
+  - remote: bufbuild/connect-es
     out: gen/ts
-    opt:
-      - mode=grpcwebtext
 
   - remote: buf.build/grpc-ecosystem/openapiv2
     out: gen/openapi
