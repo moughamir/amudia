@@ -16,7 +16,7 @@ export class DomainEvents {
   }
 
   static async dispatch(event: DomainEvent): Promise<void> {
-    const handlers = this.handlers.get(event.eventId) || []
+    const handlers = this.handlers.get(event.eventName) || []
     for (const handler of handlers) {
       await handler.handle(event)
     }
