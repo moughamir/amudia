@@ -1,7 +1,7 @@
 import type { Pool } from "pg"
 import type { MediaType, MediaStatus } from "../../core/Media"
 import { Media } from "../../domain/media/entities/Media"
-import type { IMediaRepository } from "../../domain/media/intefaces/MediaRepository"
+import type { IMediaRepository } from "../../domain/media/interfaces/MediaRepository"
 import type { MediaProps } from "../../domain/media/valueObjects/MediaProps"
 
 interface MediaRow {

@@ -1,5 +1,5 @@
 import { Router } from "express"
-import type { IMediaRepository } from "../../../shared/domain/media/intefaces/MediaRepository"
+import type { IMediaRepository } from "../../../shared/domain/media/interfaces/MediaRepository"
 import type { StorageService } from "../../../shared/infrastructure/minio/StorageService"
 import { Media } from "../../../shared/domain/media/entities/Media"
 

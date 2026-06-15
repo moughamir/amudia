@@ -1,6 +1,6 @@
 import { Result } from "../../../core/Result"
 import type { IUseCase } from "../../../core/UseCase"
-import type { IMediaRepository } from "../../../domain/media/intefaces/MediaRepository"
+import type { IMediaRepository } from "../../../domain/media/interfaces/MediaRepository"
 import { PlaybackService } from "../../../domain/media/services/PlaybackService"
 
 export interface StartPlaybackInput {

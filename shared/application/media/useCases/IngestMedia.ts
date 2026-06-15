@@ -1,6 +1,6 @@
 import { Result } from "../../../core/Result"
 import type { IUseCase } from "../../../core/UseCase"
-import type { IMediaRepository } from "../../../domain/media/intefaces/MediaRepository"
+import type { IMediaRepository } from "../../../domain/media/interfaces/MediaRepository"
 import type { MediaProps } from "../../../domain/media/valueObjects/MediaProps"
 import { Media } from "../../../domain/media/entities/Media"
 
