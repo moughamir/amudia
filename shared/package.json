@@ -14,5 +14,10 @@
     "@types/node": "^20.14.0",
     "@types/pg": "^8.11.0",
     "typescript": "^5.5.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
   }
 }
